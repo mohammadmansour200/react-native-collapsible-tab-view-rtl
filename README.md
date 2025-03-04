@@ -71,7 +71,7 @@ The [react-native-tab-view](https://github.com/satya164/react-native-tab-view) e
 To install the library, open a terminal in your project's root directory and run:
 
 ```sh
-yarn add react-native-collapsible-tab-view react-native-pager-view
+yarn add react-native-collapsible-tab-view-rtl react-native-pager-view
 ```
 
 Then, add [Reanimated](https://docs.swmansion.com/react-native-reanimated), [follow the official installation guide](https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/installation).
