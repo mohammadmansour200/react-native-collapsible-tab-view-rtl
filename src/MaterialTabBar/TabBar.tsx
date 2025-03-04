@@ -13,11 +13,11 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated'
-import { isRTL } from 'src/helpers'
 
 import { Indicator } from './Indicator'
 import { MaterialTabItem } from './TabItem'
 import { MaterialTabBarProps, ItemLayout } from './types'
+import { isRTL } from '../helpers'
 import { TabName } from '../types'
 
 export const TABBAR_HEIGHT = 48
