@@ -13,6 +13,7 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated'
+import { isRTL } from 'src/helpers'
 
 import { Indicator } from './Indicator'
 import { MaterialTabItem } from './TabItem'
@@ -42,6 +43,7 @@ export const TABBAR_HEIGHT = 48
  * ```
  */
 const MaterialTabBar = <T extends TabName = TabName>({
+  direction = isRTL ? 'rtl' : 'ltr',
   tabNames,
   indexDecimal,
   scrollEnabled = false,
@@ -223,6 +225,7 @@ const MaterialTabBar = <T extends TabName = TabName>({
       })}
       {itemsLayout.length === nTabs && (
         <Indicator
+          direction={direction}
           indexDecimal={indexDecimal}
           itemsLayout={itemsLayout}
           fadeIn={scrollEnabled}

@@ -8,15 +8,17 @@ import Animated, {
 } from 'react-native-reanimated'
 
 import { IndicatorProps } from './types'
-import { isRTL } from '../helpers'
 
 const Indicator: React.FC<IndicatorProps> = ({
+  direction,
   indexDecimal,
   itemsLayout,
   style,
   fadeIn = false,
 }) => {
   const opacity = useSharedValue(fadeIn ? 0 : 1)
+
+  const isRTL = direction === 'rtl'
 
   const layoutForDirection = isRTL ? itemsLayout.slice().reverse() : itemsLayout
 
@@ -59,7 +61,19 @@ const Indicator: React.FC<IndicatorProps> = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fadeIn])
 
-  return <Animated.View style={[stylez, styles.indicator, style]} />
+  return (
+    <Animated.View
+      style={[
+        stylez,
+        styles.indicator,
+        {
+          left: isRTL ? undefined : 0,
+          right: isRTL ? 0 : undefined,
+        },
+        style,
+      ]}
+    />
+  )
 }
 
 const styles = StyleSheet.create({
@@ -68,8 +82,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#2196f3',
     position: 'absolute',
     bottom: 0,
-    left: isRTL ? undefined : 0,
-    right: isRTL ? 0 : undefined,
   },
 })
 

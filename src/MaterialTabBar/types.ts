@@ -12,6 +12,7 @@ import { TabBarProps, TabName, TabItemProps } from '../types'
 
 type AnimatedStyle = StyleProp<Animated.AnimateStyle<ViewStyle>>
 type AnimatedTextStyle = StyleProp<Animated.AnimateStyle<TextStyle>>
+type Direction = 'rtl' | 'ltr'
 
 export type MaterialTabItemProps<T extends TabName> = TabItemProps<T> & {
   onPress: (name: T) => void
@@ -37,6 +38,11 @@ export type MaterialTabItemProps<T extends TabName> = TabItemProps<T> & {
 } & Omit<PressableProps, 'onPress' | 'children'>
 
 export type MaterialTabBarProps<N extends TabName> = TabBarProps<N> & {
+  /**
+   * Specifies the layout direction of the tab bar.
+   * @default I18nManager.isRTL
+   */
+  direction?: Direction
   /**
    * Indicates whether the tab bar should contain horizontal scroll, when enabled the tab width is dynamic
    */
@@ -90,6 +96,7 @@ export type ItemLayout = {
 }
 
 export type IndicatorProps = {
+  direction: Direction
   indexDecimal: Animated.SharedValue<number>
   itemsLayout: ItemLayout[]
   style?: AnimatedStyle
